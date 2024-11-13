@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: apache-cassandra
+  cassandra:
+    port: 9042
+    contact-points: cassandra-dev
+    keyspace-name: my_keyspace
+    schema-action: create_if_not_exists
+    username: cassandra
+    password: cassandra

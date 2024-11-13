@@ -1,0 +1,34 @@
+services:
+  cassandra:
+    image: cassandra:latest
+    container_name: cassandra-dev
+    environment:
+      CASSANDRA_CLUSTER_NAME: "MyCluster"
+      CASSANDRA_NUM_TOKENS: "256"
+      CASSANDRA_DC: "datacenter1"
+      CASSANDRA_RACK: "rack1"
+      CASSANDRA_ENDPOINT_SNITCH: "GossipingPropertyFileSnitch"
+      CASSANDRA_AUTHENTICATOR: "PasswordAuthenticator"  # Enable password authentication
+      CASSANDRA_USERNAME: "cynide"  # Optional: set a custom username
+      CASSANDRA_PASSWORD: "cynide"  # Optional: set a custom password
+    ports:
+      - "9042:9042"    # Default port for CQL (Cassandra Query Language)
+      - "7000:7000"    # Internode communication (not encrypted)
+      - "7001:7001"    # Internode communication (encrypted)
+      - "7199:7199"    # JMX
+    volumes:
+      - cassandra_dev_data:/var/lib/cassandra   # Map local path to container path
+    networks:
+      - cassandra_dev_network
+
+volumes:
+  cassandra_dev_data:  # Named volume to persist data
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: C:\Users\lenovo\Docker\cassandra
+
+networks:
+  cassandra_dev_network:
+    driver: bridge
