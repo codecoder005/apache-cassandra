@@ -8,3 +8,12 @@ spring:
     schema-action: create_if_not_exists
     username: cassandra
     password: cassandra
+
+logging:
+  level:
+    org:
+      springframework:
+        data:
+          cassandra:
+            core:
+              cql: DEBUG

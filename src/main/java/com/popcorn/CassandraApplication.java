@@ -1,5 +1,6 @@
 package com.popcorn;
 
+import com.datastax.oss.driver.api.core.CqlSession;
 import com.google.gson.Gson;
 import com.popcorn.document.UserDocument;
 import com.popcorn.repository.UserRepository;
@@ -28,7 +29,8 @@ public class CassandraApplication {
 	public CommandLineRunner commandLineRunner(
 			//ProductRepository productRepository,
 			UserRepository userRepository,
-			Gson jsonHelper
+			Gson jsonHelper,
+			CqlSession cqlSession
 	) {
 		return args -> {
 			/*Faker faker = new Faker();
