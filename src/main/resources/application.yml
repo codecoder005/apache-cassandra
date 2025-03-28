@@ -3,17 +3,20 @@ spring:
     name: apache-cassandra
   cassandra:
     port: 9042
-    contact-points: cassandra-dev
-    keyspace-name: my_keyspace
-    schema-action: create_if_not_exists
-    username: cassandra
-    password: cassandra
+    contact-points: cassandra1
+    keyspace-name: fintech
+    schema-action: none
+    local-datacenter: IND_BLR_DC_1
+    connection:
+      connect-timeout: 10
+    request:
+      timeout: 5000
+    controlconnection:
+      timeout: 10000
 
 logging:
   level:
     org:
       springframework:
         data:
-          cassandra:
-            core:
-              cql: DEBUG
+          cassandra: DEBUG

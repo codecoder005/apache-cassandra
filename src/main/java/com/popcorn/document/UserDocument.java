@@ -18,13 +18,13 @@ public class UserDocument {
     @PrimaryKeyColumn(name = "country", type = PrimaryKeyType.PARTITIONED)
     private String country;
 
-    @PrimaryKeyColumn(name = "last_name", type = PrimaryKeyType.CLUSTERED)
+    @PrimaryKeyColumn(name = "lname", type = PrimaryKeyType.CLUSTERED)
     private String lastName;
 
-    @Column(value = "uid")
-    private UUID uid;
+//    @Column(value = "uid")
+//    private UUID uid;
 
-    @Column(value = "first_name")
+    @Column(value = "fname")
     private String firstName;
 
     private String email;

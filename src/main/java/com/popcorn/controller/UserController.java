@@ -7,6 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Slice;
+import org.springframework.data.repository.core.support.RepositoryMethodInvocationListener;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -23,8 +24,14 @@ import java.util.List;
 @Slf4j
 public class UserController {
     private final UserRepository userRepository;
+    private final RepositoryMethodInvocationListener repositoryMethodInvocationListener;
 
     @GetMapping(produces = {MediaType.APPLICATION_JSON_VALUE})
+    /*public ResponseEntity<List<UserDocument>> getAllUsers() {
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(userRepository.findAll());
+    }*/
+
     public ResponseEntity<List<UserDocument>> getAllUsers(
             @RequestParam(name = "page", required = false, defaultValue = "0") Integer page,
             @RequestParam(name = "size", required = false, defaultValue = "10") Integer size) {
